@@ -8,20 +8,20 @@ This project was created because existing fast computer vision systems for analy
 
 ## Description
 
-![alt text](https://raw.githubusercontent.com/Radar3699/PoolVision/example_images/L0.jpg)
+![alt text](https://github.com/Radar3699/PoolVision/blob/master/example_images/L0.jpg)
 
 As mentioned above, Pool Vision leverages two neural networks, a lightweight 'priority' network and a heavyweight Inception-based 'classifier' network to analyze an image from a pool game. The lightweight 'priority network' scans through the image with a sliding window in traditional computer vision style. It is trained to discriminate game-relevant objects (different types of pool balls in different conditions and orientations) from non-game relevant objects (hands, arms, people, cue sticks, shadows, empty table, chalk, etc.) and can be fed-forward in about a milisecond on a CPU. At this point we have a heatmap of probability that a game-relevant object is in that area. (Note the human hand has high probability, this is a false-positive which will eventually be weeded out by the classifier network)
 
-![alt text](https://raw.githubusercontent.com/Radar3699/PoolVision/example_images/L4.jpg)
+![alt text](https://github.com/Radar3699/PoolVision/blob/master/example_images/L4.jpg)
 
 
 We then run a local-maximum algorithm on the heatmap to obtain a list of coordinates in which something game-revelant is probably there. 
 
-![alt text](https://raw.githubusercontent.com/Radar3699/PoolVision/example_images/L1.jpg)
+![alt text](https://github.com/Radar3699/PoolVision/blob/master/example_images/L1.jpg)
 
  The small images around these coordinates are then fed to the heavyweight 'classifier' network. It is an Inception V3 very deep convoltional neural network base modified in a transfer learning process to discriminate between game objects (solid ball, striped ball, cue ball, eight ball, none-of-the-above) and takes about 1 second to feed forward on a CPU. (Note the hand is labelled 'none' because this network can weed out false-positives from the priority network)
  
-![alt text](https://raw.githubusercontent.com/Radar3699/PoolVision/example_images/L2.jpg)
+![alt text](https://github.com/Radar3699/PoolVision/blob/master/example_images/L2.jpg)
  
 By leveraging this dual-network approach we are able to obtain the speed of hard-coded approaches, but the accuracy and robustness of deep learning solutions, without specialized hardware. 
 
