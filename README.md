@@ -27,7 +27,7 @@ By leveraging this dual-network approach we are able to obtain the speed of hard
 
 ## Usage
 
-###Installing 
+### Installing 
 
 Pool Vision uses TensorFlow and Keras for deep learning, as well as cv2 for image loading as well as numpy and matpotlib for numerical computation and visualization. All requirements can be installed by running 
 
